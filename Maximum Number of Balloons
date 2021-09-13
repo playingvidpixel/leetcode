@@ -1,0 +1,66 @@
+/*Given a string text, you want to use the characters of text to form as many instances of the word "balloon" as possible.
+
+You can use each character in text at most once. Return the maximum number of instances that can be formed.
+
+ 
+
+Example 1:
+
+Input: text = "nlaebolko"
+Output: 1
+
+Example 2:
+
+Input: text = "loonbalxballpoon"
+Output: 2
+
+Example 3:
+
+Input: text = "leetcode"
+Output: 0
+
+ 
+
+Constraints:
+
+    1 <= text.length <= 104
+    text consists of lower case English letters only.
+
+*/
+
+class Solution {
+    public int maxNumberOfBalloons(String text) {
+        HashMap<Character,Integer> mymap = new HashMap<Character,Integer>();
+        int len = text.length();
+        char[] arr = new char[len];
+        int x=1;
+        int min =0;
+        for(int i=0;i<len;i++)
+        {
+            arr[i]=text.charAt(i);
+            if(arr[i]=='b'||arr[i]=='a'||arr[i]=='l'||arr[i]=='o'||arr[i]=='n')
+            {
+                if(mymap.containsKey(arr[i]))
+                {
+                mymap.put(arr[i],(mymap.get(arr[i])+1));
+                }
+                else
+                  mymap.put(arr[i],1); 
+            }
+            
+        }
+        
+        System.out.println(mymap);
+        if(mymap.containsKey('b') && mymap.containsKey('a') 
+           &&
+           mymap.containsKey('l') && mymap.containsKey('o') && mymap.containsKey('n'))
+        {
+            mymap.put('l',mymap.get('l')/2);
+        mymap.put('o',mymap.get('o')/2);
+        min = Collections.min(mymap.values());
+        }
+        else
+        min=0;
+    return min;
+    }
+}
