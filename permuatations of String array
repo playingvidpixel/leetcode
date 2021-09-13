@@ -1,0 +1,39 @@
+public class HelloWorld{
+
+     public static void main(String []args){
+        String[] words = {"foo","bar","var"};
+        int len = words.length;
+        //System.out.println(len);
+        myclass.permute(words,0,len-1);
+     }
+     
+     public static class myclass{
+        public static void permute(String[] words, int l, int r)
+        {
+            int len=words.length;
+            if(l==r)
+            {
+                for(int i=0;i<len;i++)
+                {
+                System.out.print(words[i]);
+                }
+                System.out.println();
+            }
+            else
+            {
+                for(int i=l;i<=r;i++)
+                {
+                //String[] word = new String[r+1];
+                words=swap(words, l,i );
+                permute(words,l+1,r);
+                words=swap(words, l,i);
+                }
+            }}
+        public static String[] swap(String[] words, int l, int r){
+            String tmp = words[l];
+            words[l]=words[r];
+            words[r]=tmp;
+            return words;
+        }
+     }
+}
