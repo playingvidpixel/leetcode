@@ -1,0 +1,32 @@
+/*
+You are given an integer array nums where the largest integer is unique.
+
+Determine whether the largest element in the array is at least twice as much as every other number in the array. If it is, return the index of the largest element, or return -1 otherwise.
+*/
+
+class Solution {
+    public int dominantIndex(int[] nums) {
+    int len = nums.length;
+     int[] cpy = new int[len];
+        int idx = 0;
+      for(int i=0;i<len;i++)
+      {
+          cpy[i]=nums[i];
+      }
+        Arrays.sort(nums);
+        int ref = nums[len-1];
+        for(int i=0;i<len;i++)
+        {if(cpy[i]==ref)
+                idx=i;
+        }
+        if(len==1)
+            return 0;
+        System.out.println(ref);
+        for(int i=0;i<len;i++)
+        {
+            if(cpy[i]*2 > ref && cpy[i]!=ref)
+                return -1;
+        }
+        return idx;
+    }
+}
