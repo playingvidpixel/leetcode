@@ -36,6 +36,7 @@ public class Solution {
     public int[] getModifiedArray(int length, int[][] updates) {
         // Write your code here
         int[] req = new int[length];
+        int len = updates.length;
         for(int i=0;i<length;i++)
         {
             req[i]=0;
